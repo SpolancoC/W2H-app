@@ -1,0 +1,21 @@
+.dashboard-container {
+  padding: 20px;
+  text-align: center;
+  h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  ion-card {
+    text-align: center;
+    ion-card-title {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    ion-icon {
+      color: var(--ion-color-primary);
+    }
+  }
+}
