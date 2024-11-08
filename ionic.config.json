@@ -1,0 +1,7 @@
+{
+  "name": "W2H-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
