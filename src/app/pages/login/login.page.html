@@ -1,19 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio de Sesión</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form (submit)="onLogin()">
+  <form (submit)="loginvalidation()">
     <ion-item>
-      <ion-label position="stacked">Correo</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+      <ion-label for="input-email">Correo</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email" id="email-input" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+      <ion-label for="input-password">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" id="input-password" required></ion-input>
     </ion-item>
-    <ion-button expand="full" type="submit">Iniciar Sesión</ion-button>
+    <ion-button ype="submit" class="login-button">Iniciar Sesión</ion-button>
+    <ion-button class="recovery-btn" fill="clear"  (click)="redirect()">Recuperar contraseña</ion-button>
   </form>
 </ion-content>
