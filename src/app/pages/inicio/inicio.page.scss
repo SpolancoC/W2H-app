@@ -1,11 +1,77 @@
-.home-container {
-    padding: 20px;
-    text-align: center;
-    h2 {
-      margin-bottom: 15px;
-    }
-    p {
-      margin-bottom: 20px;
-    }
-  }
-  
+@import '../../../theme/variables.scss';
+
+*{
+  letter-spacing: 2px;
+}
+
+ion-content {
+  --background: var(--primary-color);
+}
+
+.title-with-icon {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 2px;
+}
+
+.img-box{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  border-radius: 10%;
+
+}
+
+.img {
+  height: 350px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 20%;
+}
+
+.start-container{
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.text-box{
+  width: 80%;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.text-box h2{
+  color:var(--text-color);
+  font-weight: bold;
+}
+
+.text-box p{
+  color:var(--text-color);
+}
+
+.btn-box{
+  margin-top: 2rem;
+}
+
+.btn{
+  margin-top: 1rem;
+  width: 80%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #7e4400;
+  color:var(--text-color);
+  text-shadow: #442502;
+  text-transform: uppercase;
+  border-radius: 20px;
+  box-shadow: 1px 3px var(--shadow-color);
+}
+
+.btn:active {
+  background-color: var(button-color-active);
+  color: var(--text-color);
+  transform: scale(0.95);
+}

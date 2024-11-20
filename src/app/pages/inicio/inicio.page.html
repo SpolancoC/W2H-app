@@ -1,14 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="home-container">
-    <h2>Bienvenido a TeLlevoAPP</h2>
-    <p>Organiza tus viajes de regreso a casa de manera fácil y segura.</p>
-    <ion-button expand="full" color="primary" routerLink="/login">Iniciar Sesión</ion-button>
-    <ion-button expand="full" color="success" routerLink="/register">Registrarse</ion-button>
+  <div class="img-box">
+    <img class="img" src="https://res.cloudinary.com/dcburqy6x/image/upload/v1732134035/W2H-logo_r2iq98.jpg" alt="logo-img">
   </div>
+  <div class="start-container">
+    <div class="text-box">
+      <h2>Bienvenido a Way2Home</h2>
+      <p>Organiza tus viajes de regreso a casa de manera fácil y segura.</p>
+    </div>
+    
+    <div class="btn-box">  
+      <button class ="btn" (click)="redirect_login()">Iniciar Sesión</button>
+      <button class ="btn" (click)="redirect_register()">Registrarse</button>
+    </div>
+  </div>  
 </ion-content>

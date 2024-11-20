@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  redirect_login(){
+    this.router.navigate(['/login']);
+  }
+
+  redirect_register(){
+    this.router.navigate(['/register']);
+  }
 
   ngOnInit() {
   }
