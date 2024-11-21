@@ -1,13 +1,73 @@
-.login-container {
-    padding: 20px;
-    ion-item {
-      margin-bottom: 15px;
-    }
-    .link {
-      text-align: center;
-      margin-top: 10px;
-      color: var(--ion-color-primary);
-      cursor: pointer;
-    }
-  }
-  
+@import '../../../theme/variables.scss';
+
+ion-content {
+  --background: var(--background-color);
+}
+.form-box{
+  text-align: center;
+}
+
+.main-box label{
+  display: block;
+  color: var(--shadow-color);
+  font-weight: bold;
+  text-align:start;
+  margin: 0.5rem;
+  letter-spacing: 1px;
+}
+
+input {
+  background-color: #fff;
+  border: 1px solid #000;
+  height: 45px;
+  box-shadow: inset 1px 1px 5px #000000;
+  border-radius: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left:10px;
+}
+
+.email-box, .password-box{
+  margin: 2rem auto;
+  width: 80%;
+
+}
+
+.btn-box{
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.login-btn {
+  width: 80%;
+  height: 45px;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  border: 2px solid var(--shadow-color);
+  box-shadow: 1px 5px var(--shadow-color);
+  transition: background-color 0.3s, transform 0.2s;
+  letter-spacing: 2px;
+}
+
+.login-btn:active {
+  background-color: var(--button-color-active);
+  color: #fff;
+  transform: scale(0.95);
+}
+
+.text-btn{
+  width: 80%;
+  font-size: 11px;
+  color: var(--shadow-color);
+  letter-spacing: 2px;
+  margin-top: 1rem;
+}
+
+.text-btn:active {
+  transform: scale(0.95);
+}

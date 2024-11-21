@@ -1,14 +1,17 @@
 <ion-content>
-  <form>
-    <ion-item>
-      <ion-label for="input-email">Correo</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" id="email-input" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label for="input-password">Contraseña</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" id="input-password" required></ion-input>
-    </ion-item>
-    <ion-button ype="submit" class="login-button">Iniciar Sesión</ion-button>
-    <ion-button class="recovery-btn" fill="clear"  >Recuperar contraseña</ion-button>
+  <form class="main-box">
+    <div class="email-box">
+      <label for="input-email">Correo</label>
+      <input [(ngModel)]="email" name="email" type="email" id="email-input" required>
+    </div>
+    <div class="password-box">
+      <label for="input-password">Contraseña</label>
+      <input [(ngModel)]="password" name="password" type="password" id="input-password" required>
+    </div>
+    <div class="btn-box">
+      <button type="submit" class="login-btn">Iniciar Sesión</button>
+    </div>
+    <button class="text-btn" fill="clear" (click)="redirect_register()">Crear usuario</button>
+    <button class="text-btn" fill="clear" (click)="redirect_restore()">Recuperar contraseña</button>
   </form>
 </ion-content>
