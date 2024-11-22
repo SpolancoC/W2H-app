@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RecuperarClavePage } from './recuperar-clave.page';
+import { RestorePasswordPage } from './restore-password.page';
 
 describe('RecuperarClavePage', () => {
-  let component: RecuperarClavePage;
-  let fixture: ComponentFixture<RecuperarClavePage>;
+  let component: RestorePasswordPage;
+  let fixture: ComponentFixture<RestorePasswordPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecuperarClavePage);
+    fixture = TestBed.createComponent(RestorePasswordPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

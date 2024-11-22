@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class RegistroPage {
+export class RegisterPage {
   nombre: string = '';
   apellido: string = '';
   email: string = '';

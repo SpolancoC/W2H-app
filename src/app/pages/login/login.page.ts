@@ -8,13 +8,16 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  
   email: string = '';
   password: string = '';
+  showPassword: boolean = false;
 
   constructor(
     private router: Router,
     private loadingCtrl: LoadingController
   ) {}
+  
 
   redirect_restore(){
     this.router.navigate(['/restore']);
@@ -24,6 +27,9 @@ export class LoginPage {
     this.router.navigate(['/register']);
   }
   
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 
   async showLoading() {
     const loading = await this.loadingCtrl.create({

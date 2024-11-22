@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RecuperarClavePageRoutingModule } from './recuperar-clave-routing.module';
+import { RestorePasswordPageRoutingModule } from './restore-password-routing.module';
 
-import { RecuperarClavePage } from './recuperar-clave.page';
+import { RestorePasswordPage } from './restore-password.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecuperarClavePageRoutingModule
+    RestorePasswordPageRoutingModule
   ],
-  declarations: [RecuperarClavePage]
+  declarations: [RestorePasswordPage]
 })
-export class RecuperarClavePageModule {}
+export class RestorePasswordPageModule {}

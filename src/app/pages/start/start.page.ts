@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.page.html',
-  styleUrls: ['./inicio.page.scss'],
+  selector: 'app-start',
+  templateUrl: './start.page.html',
+  styleUrls: ['./start.page.scss'],
 })
-export class InicioPage implements OnInit {
+export class StartPage implements OnInit {
 
   constructor(private router: Router) { }
 

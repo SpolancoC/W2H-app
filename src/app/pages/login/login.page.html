@@ -1,17 +1,42 @@
+<ion-header>
+  <ion-toolbar class="header-edit">
+    <ion-buttons slot="start">
+      <ion-back-button icon="caret-back-outline" defaultHref="/start"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <form class="main-box">
-    <div class="email-box">
-      <label for="input-email">Correo</label>
-      <input [(ngModel)]="email" name="email" type="email" id="email-input" required>
+  <div class="container">
+    <div class="img-box">
+      <img class="img" src="https://res.cloudinary.com/dcburqy6x/image/upload/v1732134035/W2H-logo_r2iq98.jpg" alt="logo-img">
     </div>
-    <div class="password-box">
-      <label for="input-password">Contraseña</label>
-      <input [(ngModel)]="password" name="password" type="password" id="input-password" required>
-    </div>
-    <div class="btn-box">
-      <button type="submit" class="login-btn">Iniciar Sesión</button>
-    </div>
-    <button class="text-btn" fill="clear" (click)="redirect_register()">Crear usuario</button>
-    <button class="text-btn" fill="clear" (click)="redirect_restore()">Recuperar contraseña</button>
-  </form>
+    <form class="main-box">
+      <div class="label-box">
+        <div class="email-box">
+          <label for="input-email">Correo</label>
+          <input [(ngModel)]="email" name="email" type="email" id="email-input" required>
+        </div>
+        <div class="password-box">
+          <label for="input-password">Contraseña</label>
+          <div class="look-password">
+            <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" id="input-password" placeholder="************" required>
+            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()" class="password-icon"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <button type="submit" class="login-btn">Iniciar Sesión</button>
+      </div>
+      <div class="register-text">
+        <span>No tienes cuenta?</span>
+        <a class="register-link" (click)="redirect_register()">Regístrate</a>
+      </div>
+      <div class="restore-text">
+        <a class="restore-link" fill="clear" (click)="redirect_restore()">Recuperar contraseña</a>
+      </div>
+      
+    </form>
+  </div>
 </ion-content>
