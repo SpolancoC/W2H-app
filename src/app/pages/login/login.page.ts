@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +11,29 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  
-  email: string = '';
-  password: string = '';
+  logForm : FormGroup;
   showPassword: boolean = false;
 
   constructor(
     private router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    public authService: AuthenticationService,
+    public formBuilder:FormBuilder, 
   ) {}
   
+  ngOnInit(){
+    this.logForm = this.formBuilder.group({
+      email: ['',[
+        Validators.required, 
+        Validators.email, 
+        Validators.pattern ("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$")
+      ]],
+      password: ['',[
+        Validators.required,
+        Validators.pattern ("(?=.*\d)(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}")
+      ]],
+    })
+  }
 
   redirect_restore(){
     this.router.navigate(['/restore']);
@@ -29,6 +45,10 @@ export class LoginPage {
   
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  get errorControl(){
+    return this.logForm?.controls;
   }
 
   async showLoading() {

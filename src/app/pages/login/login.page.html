@@ -13,22 +13,46 @@
     <div class="img-box">
       <img class="img" src="https://res.cloudinary.com/dcburqy6x/image/upload/v1732134035/W2H-logo_r2iq98.jpg" alt="logo-img">
     </div>
-    <form class="main-box">
+    <form class="main-box" [formGroup]="logForm" autocomplete="off">
       <div class="label-box">
+
+        <!--Imput email-->
         <div class="email-box">
           <label for="input-email">Correo</label>
-          <input [(ngModel)]="email" name="email" type="email" id="email-input" required>
+          <input formControlName="email" name="email" type="email" id="input-email" autocomplete="off" required>
         </div>
+        <div *ngIf="logForm.controls?.['email'] as emailControl">
+          <div *ngIf="emailControl.touched && emailControl.invalid">
+            <ion-text *ngIf="emailControl.errors?.required">
+              Campo requerido
+            </ion-text>
+            <ion-text *ngIf="emailControl.errors?.pattern">
+              Email no valido
+            </ion-text>
+          </div>
+        </div>
+
+        <!--Imput contraseña-->
         <div class="password-box">
           <label for="input-password">Contraseña</label>
           <div class="look-password">
-            <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" id="input-password" placeholder="************" required>
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="password" name="password" id="input-password" placeholder="************" autocomplete="new-password" required>
             <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()" class="password-icon"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="logForm.controls?.['password'] as passwordControl">
+          <div *ngIf="passwordControl.touched && passwordControl.invalid">
+            <ion-text *ngIf="passwordControl.errors?.required">
+              Campo requerido
+            </ion-text>
+            <ion-text *ngIf="passwordControl.errors?.pattern">
+              Contraseña no valida.<br> 
+            </ion-text>
           </div>
         </div>
       </div>
       <div class="btn-box">
-        <button type="submit" class="login-btn">Iniciar Sesión</button>
+        <button type="submit" class="login-btn" ><!--(click)="loginUser()"-->>Iniciar Sesión</button>
       </div>
       <div class="register-text">
         <span>¿No tienes cuenta?</span>

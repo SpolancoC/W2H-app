@@ -10,38 +10,109 @@
 <ion-content>
   <div class="container">
     <h2>Registro</h2>
-    <form class="main-box">
+    <form class="main-box" [formGroup]="regForm" autocomplete="off" novalidate>
       <div class="label-box">
-        <!-- Campo Nombre -->
+
+        <!--Imput nombre-->
         <div class="input-box">
           <label for="input-name">Nombre</label>
-          <input [(ngModel)]="firstName" name="firstName" type="text" id="input-name" required>
+          <input formControlName="firstName" name="firstName" type="text" id="input-name" autocomplete="off" required>
         </div>
-
-        <!-- Campo Apellido -->
+        <div *ngIf="regForm.controls?.['firstName'] as firstNameControl">
+          <div *ngIf="firstNameControl.touched && firstNameControl.invalid">
+            <ion-text *ngIf="firstNameControl.errors?.required">
+              Campo requerido
+            </ion-text>
+          </div>
+        </div>
+        
+        <!--Imput apellido-->        
         <div class="input-box">
           <label for="input-lastname">Apellido</label>
-          <input [(ngModel)]="lastName" name="lastName" type="text" id="input-lastname" required>
+          <input formControlName="lastName" name="lastName" type="text" id="input-lastname" autocomplete="off" required>
+        </div>
+        <div *ngIf="regForm.controls?.['lastName'] as lastNameControl">
+          <div *ngIf="lastNameControl.touched && lastNameControl.invalid">
+            <ion-text *ngIf="lastNameControl.errors?.required">
+              Campo requerido
+            </ion-text>
+          </div>
         </div>
 
-        <!-- Campo Correo -->
+        <!--Imput email-->
         <div class="input-box">
           <label for="input-email">Correo</label>
-          <input [(ngModel)]="email" name="email" type="email" id="input-email" required>
+          <input formControlName="email" name="email" type="email" id="input-email" autocomplete="off" required>
         </div>
-
-        <!-- Campo Contraseña -->
+        <div *ngIf="regForm.controls?.['email'] as emailControl">
+          <div *ngIf="emailControl.touched && emailControl.invalid">
+            <ion-text *ngIf="emailControl.errors?.required">
+              Campo requerido
+            </ion-text>
+            <ion-text *ngIf="emailControl.errors?.pattern">
+              Email no valido
+            </ion-text>
+          </div>
+        </div>
+                
+        <!--Imput contraseña-->
         <div class="input-box">
           <label for="input-password">Contraseña</label>
-          <input [(ngModel)]="password" name="password" type="password" id="input-password" required>
+          <div class="look-password">
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="password" name="password" id="input-password" placeholder="************" autocomplete="new-password"  required>
+            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()" class="password-icon"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="regForm.controls?.['password'] as passwordControl">
+          <div *ngIf="passwordControl.touched && passwordControl.invalid">
+            <ion-text *ngIf="passwordControl.errors?.required">
+              Campo requerido
+            </ion-text>
+            <ion-text *ngIf="passwordControl.errors?.pattern">
+              Contraseña no valida.<br> 
+            </ion-text>
+          </div>
+        </div>
+        <div *ngIf="regForm.controls?.['password'] as passwordControl">
+          <div *ngIf="passwordControl.touched && passwordControl.invalid">
+            <!-- Requisito: Una mayúscula -->
+            <ion-text *ngIf="!hasUpperCase" class="password-requirement">
+              Debe contener al menos una mayúscula
+            </ion-text>
+            <!-- Requisito: Un número -->
+            <ion-text *ngIf="!hasNumber" class="password-requirement">
+              Debe contener al menos un número
+            </ion-text>
+            <!-- Requisito: Longitud mínima -->
+            <ion-text *ngIf="passwordControl.value?.length < 8" class="password-requirement">
+              Debe tener al menos 8 caracteres
+            </ion-text>
+          </div>
         </div>
 
-        <!-- Campo Confirmar Contraseña -->
+        <!--Imput confirmar contraseña-->
+        <br>
         <div class="input-box">
           <label for="input-confirm-password">Confirmar Contraseña</label>
-          <input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" id="input-confirm-password" required>
+          <div class="look-password">
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" name="password" id="input-password" placeholder="************" autocomplete="new-password"  required>
+            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()" class="password-icon"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="regForm.controls?.['confirmPassword'] as confirmPasswordControl">
+          <div *ngIf="confirmPasswordControl.touched && confirmPasswordControl.invalid">
+            <ion-text *ngIf="confirmPasswordControl.errors?.required">
+              Campo requerido
+            </ion-text>
+          </div>
+        </div>
+        <div *ngIf="regForm.hasError('passwordMismatch') && regForm.controls?.['confirmPassword']?.touched">
+          <ion-text color="danger">
+            Las contraseñas no coinciden.
+          </ion-text>
         </div>
       </div>
+
       <div class="btn-box">
         <button type="submit" class="register-btn">Registrar</button>
       </div>

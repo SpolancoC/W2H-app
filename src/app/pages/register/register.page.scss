@@ -75,6 +75,57 @@ input:focus {
   box-shadow: 0 0 5px var(--shadow-color);
 }
 
+.look-password{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.look-password input {
+  padding-right: 5.5rem;
+}
+
+.password-icon {
+  position: absolute;
+  border: none;
+  margin-left: 5px;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #2c292c;
+  background-color:transparent;
+  padding: 5px;
+}
+
+ion-text{
+  color: #e70000;
+  font-weight: bold;
+  margin-bottom: 1rem; 
+}
+
+.password-requirement {
+  color: #4e2e0a;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: opacity 0.5s ease-out;
+}
+
+.password-requirement.ng-leave {
+  opacity: 0;
+  display: none;
+}
+
+.password-requirement.ng-enter {
+  opacity: 1;
+}
+
+.password-requirement.ng-leave-active {
+  opacity: 0;
+  display: none;
+}
+
+
 .btn-box{
   margin-top: 1rem;
   display: flex;
