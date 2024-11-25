@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { ValidationErrors } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
@@ -14,11 +15,13 @@ import { ValidationErrors } from '@angular/forms';
 export class RegisterPage {
   regForm : FormGroup;
   showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     public formBuilder:FormBuilder, 
     public loadingCtrl: LoadingController,
     public authService: AuthenticationService,
+    private firestore: AngularFirestore,
     private router: Router
   ) {}
 
@@ -40,7 +43,7 @@ export class RegisterPage {
         Validators.pattern ("(?=.*\d)(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}")
       ]],
       confirmPassword: ['', [Validators.required]]
-    }, { validators: this.passwordMatchValidator }); // Aplicamos el validador al FormGroup
+    }, { validators: this.passwordMatchValidator }); 
   }
 
   get errorControl(){
@@ -49,6 +52,10 @@ export class RegisterPage {
 
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   get passwordControl() {
@@ -63,24 +70,40 @@ export class RegisterPage {
     return /\d/.test(this.passwordControl?.value || '');
   }
 
-  // Función de validación de contraseñas coincidentes
   passwordMatchValidator(formGroup: FormGroup): ValidationErrors | null {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
-    
-    // Si las contraseñas no coinciden
+
     if (password && confirmPassword && password !== confirmPassword) {
       return { passwordMismatch: true };
     }
-    return null; // Si coinciden, no hay error
+    return null;
   }
 
-
-  async singUp(){
+  async register() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
-    if(this.regForm?.valid){
-      //const user = await this.authService.registerUser(email,password)
+
+    if (this.regForm.valid) {
+      const { email, password, firstName, lastName } = this.regForm.value;
+
+      try {
+        // Registra al usuario con correo y contraseña
+        const userCredential = await this.authService.registerUser(email, password);
+        
+        // Guarda el nombre y apellido en Firestore
+        await this.firestore.collection('users').doc(userCredential.user.uid).set({
+          firstName,
+          lastName,
+          email
+        });
+
+        loading.dismiss();
+        this.router.navigate(['/login']);
+      } catch (error) {
+        console.error("Error al registrar: ", error);
+        loading.dismiss();
+      }
     }
   }
 }

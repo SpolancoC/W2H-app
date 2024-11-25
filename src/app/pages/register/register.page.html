@@ -95,8 +95,8 @@
         <div class="input-box">
           <label for="input-confirm-password">Confirmar Contraseña</label>
           <div class="look-password">
-            <input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" name="password" id="input-password" placeholder="************" autocomplete="new-password"  required>
-            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()" class="password-icon"></ion-icon>
+            <input [type]="showConfirmPassword ? 'text' : 'confirmPassword'" formControlName="confirmPassword" name="confirm-password" id="input-confirm-password" placeholder="************" autocomplete="new-password"  required>
+            <ion-icon [name]="showConfirmPassword ? 'eye-off' : 'eye'" (click)="toggleConfirmPassword()" class="password-icon"></ion-icon>
           </div>
         </div>
         <div *ngIf="regForm.controls?.['confirmPassword'] as confirmPasswordControl">
@@ -114,8 +114,10 @@
       </div>
 
       <div class="btn-box">
-        <button type="submit" class="register-btn">Registrar</button>
+        <button (click)="register()" type="submit" class="register-btn">Registrar</button>
       </div>
+
+
       <div class="login-text">
         <span>¿Ya tienes cuenta?</span>
         <a class="login-link" (click)="redirect_login()">Iniciar sesión</a>

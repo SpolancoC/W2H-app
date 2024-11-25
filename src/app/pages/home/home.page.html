@@ -6,7 +6,7 @@
 
 <ion-content>
   <div class="dashboard-container">
-    <h2>¡Bienvenido de nuevo, [Nombre del usuario]!</h2>
+    <h2>¡Bienvenido de nuevo, {{user.firstName}}!</h2>
     <p>Selecciona una opción para comenzar:</p>
     
     <ion-grid>
@@ -56,4 +56,5 @@
       </ion-row>
     </ion-grid>
   </div>
+  <button (click)="logOut()">Salir</button>
 </ion-content>

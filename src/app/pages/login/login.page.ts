@@ -51,6 +51,23 @@ export class LoginPage {
     return this.logForm?.controls;
   }
 
+  async login(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    if(this.logForm?.valid){
+      const user = await this.authService.loginUser(this.logForm.value.email,this.logForm.value.password).catch((error)=>{
+        console.log(error);
+        loading.dismiss()
+      })
+      if(user){
+        loading.dismiss();
+        this.router.navigate(['/home'])
+      }else{
+        console.log('Ingrese datos validos')
+      }
+    }
+  }
+
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       spinner: 'lines',
@@ -63,5 +80,3 @@ export class LoginPage {
 
 }
 
-//this.showLoading();
-//this.loadingCtrl.dismiss();
